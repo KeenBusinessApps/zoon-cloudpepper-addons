@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <div t-name="insabhi_barcode_storage.MainMenu" class="o_stock_barcode_main_menu_container o_home_menu_background">
+        <div class="o_stock_barcode_main_menu position-relative bg-view">
+            <a href="#" class="o_stock_barcode_menu d-block float-start" t-on-click="() => this.home.toggle(true)">
+                <i class="oi oi-chevron-left"/>
+            </a>
+            <h1 class="mb-4">Effortless Barcode Scanning</h1>
+
+
+            <div class="o_stock_barcode_container position-relative d-inline-block mt-4 mb-5">
+<!--                <div t-if='mobileScanner' class="o_stock_mobile_barcode_container">-->
+<!--                    <button class="btn btn-primary o_stock_mobile_barcode" t-on-click="openMobileScanner">-->
+<!--                        <i class="fa fa-camera fa-2x o_mobile_barcode_camera"/> Tap to Scan-->
+<!--                    </button>-->
+<!--                    <img src="/barcodes/static/img/barcode.png" alt="Barcode" class="img-fluid mb-1 mt-1"/>-->
+<!--                </div>-->
+                <img src="/barcodes/static/img/barcode.png" alt="Barcode" class="img-fluid mb-1 mt-1"/>
+                <span class="o_stock_barcode_laser"/>
+            </div>
+
+            <ul class="text-start mb-sm-5 ps-4">
+                <li>Scan an <b>Operation Type</b> — Start a new transfer in seconds.</li>
+                <li t-if="locationsEnabled">Scan a <b>Location</b> — Instantly start an internal transfer from this spot.</li>
+                <li>Scan a <b>Product</b> — Find its location and check stock on the spot.</li>
+            </ul>
+        </div>
+    </div>
+
+</templates>

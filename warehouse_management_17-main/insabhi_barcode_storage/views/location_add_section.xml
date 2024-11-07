@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+<!--         <record id="view_location_form_inherit" model="ir.ui.view">-->
+<!--            <field name="name">stock.location.form.inherit</field>-->
+<!--            <field name="model">stock.location</field>-->
+<!--            <field name="inherit_id" ref="stock.view_location_form"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                 <xpath expr="//sheet/group/group[last()]" position="after">-->
+<!--                    <group string="Child locations">-->
+<!--                        <field name="child_ids"/>-->
+<!--                    </group>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <record id="view_location_form_inherit" model="ir.ui.view">
+            <field name="name">stock.location.form.inherit</field>
+            <field name="model">stock.location</field>
+            <field name="inherit_id" ref="stock.view_location_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//h2" position="after">
+                    <label for="lot_stock_warehouse_id"/>
+                    <h2><field name="lot_stock_warehouse_id" invisible="location_id"/></h2>
+                </xpath>
+                <xpath expr="//sheet" position="inside">
+                    <notebook>
+                        <page string="Sections">
+                            <group>
+                                <field name="child_ids" string=""/>
+                            </group>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+
