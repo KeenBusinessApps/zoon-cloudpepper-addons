@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <menuitem id="menu_inventory_root" name="Warehouse Management" sequence="1" web_icon="insabhi_barcode_storage,static/description/menu.png"/>
+
+        <menuitem id="menu_warehouse"
+                  name="Warehouse"
+                  parent="menu_inventory_root"
+                  action="stock.action_warehouse_form"
+                  sequence="2"/>
+
+        <record id="action_stock_location_parent" model="ir.actions.act_window">
+            <field name="name">Racks</field>
+            <field name="res_model">stock.location</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('location_id', '=', False), ('usage', '=', 'internal')]</field>
+        </record>
+
+        <record id="action_stock_location_child" model="ir.actions.act_window">
+            <field name="name">Sections</field>
+            <field name="res_model">stock.location</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('location_id', '!=', False), ('usage', '=', 'internal')]</field>
+        </record>
+
+        <menuitem id="menu_parent_location"
+                  name="Racks"
+                  parent="menu_inventory_root"
+                  action="action_stock_location_parent"
+                  sequence="3"/>
+
+        <menuitem id="menu_child_location"
+                  name="Sections"
+                  parent="menu_inventory_root"
+                  action="action_stock_location_child"
+                  sequence="4"/>
+
+        <record id="action_barcode" model="ir.actions.act_window">
+            <field name="name">Barcode</field>
+            <field name="res_model">barcode.rule</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_custom_popup_unique" model="ir.actions.client">
+            <field name="name">Custom Barcode</field>
+            <field name="tag">custom_barcode_action</field>
+        </record>
+
+        <menuitem id="menu_popup"
+                  name="Scan Barcode"
+                  action="action_custom_popup_unique"
+                  parent="menu_inventory_root"
+                  sequence="4"/>
+
+        <record id="stock_barcode.stock_barcode_menu" model="ir.ui.menu">
+            <field name="active" eval="False"/>
+        </record>
+    </data>
+</odoo>

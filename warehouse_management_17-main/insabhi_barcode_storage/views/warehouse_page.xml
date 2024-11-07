@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_warehouse_inherit" model="ir.ui.view">
+            <field name="name">stock.warehouse.form.inherit</field>
+            <field name="model">stock.warehouse</field>
+            <field name="inherit_id" ref="stock.view_warehouse"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Racks Information">
+                        <group>
+                            <field name="lot_stock_ids" context="{'default_lot_stock_warehouse_id': id}" />
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
